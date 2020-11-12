@@ -13,10 +13,5 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['prettier', 'jest'],
-  rules: {
-    indent: ['error', 2],
-    'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single'],
-    semi: ['error', 'always'],
-  },
+  rules: {},
 };
