@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:compiler": "tsc --project tsconfig.config.json",
-    "test": "jest --verbose"
+    "dev:compiler": "tsc --watch --project ./config/tsconfig.compiler.json",
+    "build:compiler": "tsc --project ./config/tsconfig.compiler.json",
+    "test": "jest --verbose --coverage"
   },
   "author": "",
   "license": "ISC",
