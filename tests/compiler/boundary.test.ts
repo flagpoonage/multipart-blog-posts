@@ -1,4 +1,4 @@
-const { generateBoundary } = require('./boundary');
+import { generateBoundary } from 'compiler/boundary';
 
 describe('Boundary utilities', () => {
   describe('generateBoundary', () => {

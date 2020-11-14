@@ -1,15 +1,8 @@
-const {
-  parseSection,
-  parseMeta,
-  createMetaFromSections,
-  parse,
-} = require('./parser');
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { parse, parseMeta, parseSection, createMetaFromSections } from 'compiler/parser';
 
-const mockPost = fs
-  .readFileSync(path.join(__dirname, '../posts/example.post'))
-  .toString('utf-8');
+const mockPost = fs.readFileSync(path.join(__dirname, '../../posts/example.post')).toString('utf-8');
 
 describe('Post parser', () => {
   describe('parseMeta', () => {
