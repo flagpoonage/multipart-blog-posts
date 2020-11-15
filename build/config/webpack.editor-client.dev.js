@@ -18,9 +18,20 @@ module.exports = {
     contentBase: `${base_path}/dist/editor/client`,
     publicPath: '/',
   },
-  plugins: [new MiniCssExtractPlugin(), new HtmlWebpackPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Blog Engine',
+      template: `${base_path}/build/templates/editor-client.hbs`,
+      inject: false,
+    }),
+  ],
   module: {
     rules: [
+      {
+        test: /\.hbs$/,
+        loader: 'handlebars-loader',
+      },
       {
         test: /\.tsx?$/i,
         loader: 'ts-loader',

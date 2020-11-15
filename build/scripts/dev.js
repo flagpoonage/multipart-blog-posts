@@ -13,5 +13,5 @@ const basePath = process.cwd();
     ['--watch', '--preserveWatchOutput', '--project', './build/config/tsconfig.editor-server.json'],
     commandOptions
   );
-  spawn('nodemon', ['./dist/editor/server/index.js'], commandOptions);
+  spawn('nodemon', ['--watch', './dist/editor/server', './dist/editor/server/index.js'], commandOptions);
 })();
