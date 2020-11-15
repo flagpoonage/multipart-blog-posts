@@ -1,4 +1,4 @@
-import { BlogMetaVariable, BlogFileSection, BlogFileMetaSection, BlogFile } from './types';
+import { BlogMetaVariable, BlogFileSection, BlogFileMetaSection, BlogFileMeta, BlogFileContent } from '../types';
 
 export function parseMeta(metaRaw: string): BlogMetaVariable[] {
   const lines = metaRaw.split('\n').filter(Boolean);
@@ -19,18 +19,22 @@ export function parseMeta(metaRaw: string): BlogMetaVariable[] {
   }, []);
 }
 
-export function createMetaFromSections(sections: BlogFileSection[]): Record<string, string> {
+export function createMetaFromSections(sections: BlogFileSection[]): BlogFileMeta {
   const metaSections = sections.filter((a) => a.tag === 'meta') as BlogFileMetaSection[];
 
-  return metaSections.reduce((acc: Record<string, string>, val: BlogFileMetaSection) => {
+  return metaSections.reduce((acc: BlogFileMeta, val: BlogFileMetaSection) => {
     const result = parseMeta(val.content);
 
     result.forEach((variable) => {
-      acc[variable.key] = variable.value;
+      if (variable.key.toLowerCase() === 'tags') {
+        acc[variable.key] = variable.value.split(',').map((a) => a.trim());
+      } else {
+        acc[variable.key] = variable.value;
+      }
     });
 
     return acc;
-  }, {} as Record<string, string>);
+  }, {} as BlogFileMeta);
 }
 
 export function parseSection(section: string): BlogFileSection {
@@ -42,7 +46,7 @@ export function parseSection(section: string): BlogFileSection {
   };
 }
 
-export function parse(contentRaw: string): BlogFile {
+export function parseContent(contentRaw: string): [BlogFileContent, string] {
   const contentClean = contentRaw.replace('\r\n', '\n').replace('\r', '\n');
 
   const [boundaryLine] = contentClean.split(' ');
@@ -53,8 +57,11 @@ export function parse(contentRaw: string): BlogFile {
   const sections = sectionsRaw.map(parseSection).filter((a) => !!a.content);
   const meta = createMetaFromSections(sections);
 
-  return {
-    meta,
-    sections: sections.filter((a) => a.tag !== 'meta'),
-  };
+  return [
+    {
+      meta,
+      sections: sections.filter((a) => a.tag !== 'meta'),
+    },
+    boundary,
+  ];
 }

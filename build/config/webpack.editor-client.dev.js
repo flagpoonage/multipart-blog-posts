@@ -5,16 +5,17 @@ const base_path = process.cwd();
 
 module.exports = {
   devtool: 'cheap-module-source-map',
-  entry: `${base_path}/src/editor/index.tsx`,
+  entry: `${base_path}/src/editor/client/index.tsx`,
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.css'],
   },
   output: {
     filename: 'main.js',
-    path: `${base_path}/dist/editor`,
+    path: `${base_path}/dist/editor/client`,
   },
   devServer: {
-    contentBase: '../dist',
+    writeToDisk: true,
+    contentBase: `${base_path}/dist/editor/client`,
     publicPath: '/',
   },
   plugins: [new MiniCssExtractPlugin(), new HtmlWebpackPlugin()],
@@ -22,7 +23,10 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/i,
-        use: ['ts-loader'],
+        loader: 'ts-loader',
+        options: {
+          configFile: `${base_path}/build/config/tsconfig.editor-client.json`,
+        },
       },
       {
         test: /\.css$/i,
