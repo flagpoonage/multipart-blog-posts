@@ -136,7 +136,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.2rem;
   font-family: 'Roboto', sans-serif;
 }
@@ -144,7 +144,7 @@ body {
 /* VARIABLES */
 
 :root {
-  --blockSpacing: 2rem;
+  --blockSpacing: 1.75rem;
   --bgColor: white;
   --primaryColor: #d00;
   --borderColor: #f002;
@@ -181,6 +181,12 @@ h1 {
   line-height: 1.5em;
 }
 
+select {
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  display: inline-block;
+}
+
 /* COLOUR UTILITIES */
 
 .c-bg {
@@ -213,11 +219,11 @@ h1 {
   font-size: var(--fontSizeSmall);
 }
 
-.f-lh-2 {
+.f-2lh {
   line-height: 2rem;
 }
 
-.f-lh-2e {
+.f-2elh {
   line-height: 2em;
 }
 
@@ -243,12 +249,20 @@ h1 {
   padding: calc(var(--blockSpacing) / 4) 0;
 }
 
+.pd-xy4 {
+  padding: calc(var(--blockSpacing) / 4);
+}
+
 .mg {
   margin: var(--blockSpacing);
 }
 
 .mg-x {
   margin: 0 var(--blockSpacing);
+}
+
+.mg-y {
+  margin: var(--blockSpacing) 0;
 }
 
 .mg-l {
@@ -259,8 +273,12 @@ h1 {
   margin-right: var(--blockSpacing);
 }
 
-.mg-y {
-  margin: var(--blockSpacing) 0;
+.mg-t {
+  margin-top: var(--blockSpacing);
+}
+
+.mg-b {
+  margin-bottom: var(--blockSpacing);
 }
 
 .w {

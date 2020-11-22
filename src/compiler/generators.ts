@@ -8,11 +8,11 @@ const makeSort = (comparisonFinder: (a: BlogFile) => string, direction: 'asc' | 
     const compareA = comparisonFinder(a);
     const compareB = comparisonFinder(b);
     if (compareA > compareB) {
-      return direction === 'asc' ? -1 : 1;
+      return direction === 'asc' ? 1 : -1;
     }
 
     if (compareA < compareB) {
-      return direction === 'asc' ? 1 : -1;
+      return direction === 'asc' ? -1 : 1;
     }
 
     return 0;
