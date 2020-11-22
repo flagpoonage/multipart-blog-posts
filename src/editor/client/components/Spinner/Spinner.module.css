@@ -1,0 +1,21 @@
+@keyframes spin-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  display: inline-block;
+  --spinnerColor: var(--primaryColor);
+}
+
+.spinner {
+  display: block;
+  border-radius: 50%;
+  border: 0px solid var(--spinnerColor);
+  border-color: var(--spinnerColor) transparent var(--spinnerColor) transparent;
+  animation: spin-animation 1.2s linear infinite;
+}

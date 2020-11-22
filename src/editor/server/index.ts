@@ -1,6 +1,7 @@
 import { generateBoundary } from '../../compiler/boundary';
 import express from 'express';
 import { getPostIndex } from './post-index';
+import cors from 'cors';
 
 const base_path = process.cwd();
 const post_path = `${base_path}/posts`;
@@ -15,6 +16,8 @@ async function run() {
     console.log(`Blog dev server running on port ${port}`);
   });
 }
+
+app.use(cors());
 
 app.get('/', (rq, rs) => {
   rs.send({});

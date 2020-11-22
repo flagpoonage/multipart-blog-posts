@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const base_path = process.cwd();
 
 module.exports = {
+  mode: 'development',
   devtool: 'cheap-module-source-map',
   entry: `${base_path}/src/editor/client/index.tsx`,
   resolve: {
@@ -15,6 +16,7 @@ module.exports = {
   },
   devServer: {
     writeToDisk: true,
+    historyApiFallback: true,
     contentBase: `${base_path}/dist/editor/client`,
     publicPath: '/',
   },

@@ -7,6 +7,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:jest/recommended",
     "plugin:prettier/recommended"
@@ -27,5 +28,5 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier", "jest", "@typescript-eslint"]
+  "plugins": ["react", "react-hooks", "prettier", "jest", "@typescript-eslint"]
 }

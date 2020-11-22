@@ -1,3 +1,5 @@
+/* CSS RESET */
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -134,5 +136,216 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 1.2rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* VARIABLES */
+
+:root {
+  --blockSpacing: 2rem;
+  --bgColor: white;
+  --primaryColor: #d00;
+  --borderColor: #f002;
+  --linkColor: var(--primaryColor);
+  --fontSizeH1: 1.5rem;
+  --fontSizeH2: 1.3rem;
+  --fontSizeSmall: 0.8rem;
+  --textColor: #222;
+}
+
+/* SPECIAL ELEMENTS */
+
+#react-container {
+  width: 100%;
+  height: 100%;
+  color: var(--textColor);
+}
+
+/* DEFAULTS */
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--linkColor);
+  text-decoration: none;
+  display: inline-block;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1.5em;
+}
+
+/* COLOUR UTILITIES */
+
+.c-bg {
+  background-color: var(--bgColor);
+}
+
+.c-tx-l1 {
+  color: #222;
+}
+
+.c-tx-l2 {
+  color: #444;
+}
+
+/* FONT UTILITIES */
+
+.f-b {
+  font-weight: bold;
+}
+
+.f-s-h1 {
+  font-size: var(--fontSizeH1);
+}
+
+.f-s-h2 {
+  font-size: var(--fontSizeH2);
+}
+
+.f-s-small {
+  font-size: var(--fontSizeSmall);
+}
+
+.f-lh-2 {
+  line-height: 2rem;
+}
+
+.f-lh-2e {
+  line-height: 2em;
+}
+
+/* SPACE UTILITIES */
+
+.pd {
+  padding: var(--blockSpacing);
+}
+
+.pd-x {
+  padding: 0 var(--blockSpacing);
+}
+
+.pd-y {
+  padding: var(--blockSpacing) 0;
+}
+
+.pd-y2 {
+  padding: calc(var(--blockSpacing) / 2) 0;
+}
+
+.pd-y4 {
+  padding: calc(var(--blockSpacing) / 4) 0;
+}
+
+.mg {
+  margin: var(--blockSpacing);
+}
+
+.mg-x {
+  margin: 0 var(--blockSpacing);
+}
+
+.mg-l {
+  margin-left: var(--blockSpacing);
+}
+
+.mg-r {
+  margin-right: var(--blockSpacing);
+}
+
+.mg-y {
+  margin: var(--blockSpacing) 0;
+}
+
+.w {
+  width: 100%;
+}
+
+.h {
+  height: 100%;
+}
+
+/* LAYOUT UTILITIES */
+
+.flex {
+  display: flex;
+}
+
+.flex.dir-y {
+  flex-direction: column;
+}
+
+.flex.dir-x {
+  flex-direction: row;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.shrink {
+  flex-shrink: 1;
+}
+
+.of {
+  overflow: auto;
+}
+
+.of-h {
+  overflow: hidden;
+}
+
+.of-x {
+  overflow-x: auto;
+}
+
+.of-y {
+  overflow-y: auto;
+}
+
+.fix {
+  position: fixed;
+}
+
+.tl0 {
+  top: 0;
+  left: 0;
+}
+
+/* BORDER UTILITIES */
+
+.bd {
+  border: solid 1px var(--borderColor);
+}
+
+.bd-t {
+  border-top: solid 1px var(--borderColor);
+}
+
+.bd-l {
+  border-left: solid 1px var(--borderColor);
+}
+
+.bd-r {
+  border-right: solid 1px var(--borderColor);
+}
+
+.bd-b {
+  border-bottom: solid 1px var(--borderColor);
+}
+
+.bd-x {
+  border-left: solid 1px var(--borderColor);
+  border-right: solid 1px var(--borderColor);
+}
+
+.bd-y {
+  border-left: solid 1px var(--borderColor);
+  border-right: solid 1px var(--borderColor);
 }

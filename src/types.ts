@@ -40,9 +40,15 @@ export interface BlogPostSortIndex {
   asc: string[];
 }
 
-export interface BlogPostIndex {
-  files: Record<string, BlogFileMeta>;
+export interface SortedIndex {
   alpha: BlogPostSortIndex;
   created: BlogPostSortIndex;
   updated: BlogPostSortIndex;
 }
+
+export interface BlogPostIndex extends SortedIndex {
+  files: Record<string, BlogFileMeta>;
+}
+
+export type SortOrder = keyof BlogPostSortIndex;
+export type SortKey = keyof SortedIndex;
