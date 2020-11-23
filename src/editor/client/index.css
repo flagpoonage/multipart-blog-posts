@@ -146,13 +146,17 @@ body {
 :root {
   --blockSpacing: 1.75rem;
   --bgColor: white;
-  --primaryColor: #d00;
-  --borderColor: #f002;
+  --primaryColor: #0af;
+  --borderColor: #0af2;
+  --formInactiveBorder: #777;
+  --formDisabledBg: #eee;
   --linkColor: var(--primaryColor);
   --fontSizeH1: 1.5rem;
   --fontSizeH2: 1.3rem;
   --fontSizeSmall: 0.8rem;
+  --fontSizeSmaller: 0.7rem;
   --textColor: #222;
+  --radius: 0.2rem;
 }
 
 /* SPECIAL ELEMENTS */
@@ -181,10 +185,29 @@ h1 {
   line-height: 1.5em;
 }
 
-select {
+select,
+button,
+input {
   font-size: 1rem;
   font-family: 'Roboto', sans-serif;
   display: inline-block;
+  outline: none;
+  border-radius: var(--radius);
+}
+
+input {
+  border-style: solid;
+  border-width: 1px;
+  font-family: 'Roboto', sans-serif;
+}
+
+input[type='text']:disabled {
+  background-color: var(--formDisabledBg);
+  border: solid 1px var(--formInactiveBorder);
+}
+
+input[type='text']:focus {
+  border-color: var(--primaryColor);
 }
 
 /* COLOUR UTILITIES */
@@ -215,8 +238,12 @@ select {
   font-size: var(--fontSizeH2);
 }
 
-.f-s-small {
+.f-s-sm1 {
   font-size: var(--fontSizeSmall);
+}
+
+.f-s-sm2 {
+  font-size: var(--fontSizeSmaller);
 }
 
 .f-2lh {
