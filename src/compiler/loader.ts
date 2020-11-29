@@ -1,4 +1,4 @@
-import { BlogFile, BlogFileRaw } from '../types';
+import { BlogFile, BlogFileRaw } from '@apptypes';
 import { readFile } from 'fs';
 import { basename } from 'path';
 import { parseContent } from './parser';

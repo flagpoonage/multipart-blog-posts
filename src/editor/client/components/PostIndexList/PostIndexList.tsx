@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react';
-import { BlogPostIndex, SortedIndex, SortKey, SortOrder } from '../../../../types';
-import { IndexedPost } from '../IndexedPost/IndexedPost';
+import { BlogPostIndex, SortedIndex, SortKey, SortOrder } from '@apptypes';
+import { IndexedPost } from '@editor-components/IndexedPost/IndexedPost';
 interface Props {
   index: BlogPostIndex;
 }

@@ -1,12 +1,12 @@
 import React, { ReactElement, useEffect } from 'react';
-import { getPostIndex } from '../../services/api';
+import { getPostIndex } from '@api';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { NewPost } from '../../pages/NewPost';
-import { PostEditor } from '../../pages/PostEditor';
-import { PostIndex } from '../../pages/PostIndex';
-import { Header } from '../Header/Header';
+import { NewPost } from '@editor-pages/NewPost';
+import { PostEditor } from '@editor-pages/PostEditor';
+import { PostIndex } from '@editor-pages/PostIndex';
+import { Header } from '@editor-components/Header/Header';
 import styles from './Root.module.css';
-import { classnames } from '../../../../utils/classnames';
+import { classnames } from '@utils/classnames';
 
 export function Root(): ReactElement {
   useEffect(() => {

@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "node ./build/scripts/dev",
-    "dev:compiler": "tsc --watch --project ./config/tsconfig.compiler.json",
-    "dev:editor": "webpack serve --config ./config/webpack.dev.js",
-    "build:compiler": "tsc --project ./config/tsconfig.compiler.json",
-    "build:editor": "webpack --config ./config/webpack.dev.js",
+    "dev:compiler": "tsc --watch --project ./build/config/tsconfig.compiler.json",
+    "dev:editor": "webpack serve --config ./build/config/webpack.editor-client.dev.js",
+    "build:compiler": "tsc --project ./build/config/tsconfig.compiler.json",
+    "build:editor": "webpack --config ./build/config/webpack.dev.js",
     "test": "jest --verbose --coverage"
   },
   "author": "",

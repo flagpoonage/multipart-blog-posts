@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
-import { Spinner } from '../components/Spinner/Spinner';
+import React, { ReactElement, useState } from 'react';
+import { CreateBlogPostFields, BlogFile } from '@apptypes';
+import { Spinner } from '@editor-components/Spinner/Spinner';
+import { APIRoutes } from '@api';
+import { useApiPost } from '@hooks/use-api-post';
 
-export function generateIdFromTitle(title: string) {
+export function generateIdFromTitle(title: string): string {
   const parts = title.split(' ').filter((a) => !!a);
 
   return parts
@@ -11,10 +14,13 @@ export function generateIdFromTitle(title: string) {
     .join('-');
 }
 
-export function NewPost() {
+export function NewPost(): ReactElement {
   const [useCustomId, setUseCustomId] = useState(false);
   const [title, setTitle] = useState('');
   const [id, setId] = useState('');
+  const [postResult, createPost] = useApiPost<CreateBlogPostFields, BlogFile>(APIRoutes.postCreatePost());
+
+  const [, requestStatus, error] = postResult;
 
   const onUpdateTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -31,6 +37,12 @@ export function NewPost() {
 
     setUseCustomId(!useCustomId);
   };
+
+  const onCreatePost = () => {
+    createPost({ id, title });
+  };
+
+  const isValid = title && id;
 
   return (
     <div className="pd">
@@ -51,9 +63,14 @@ export function NewPost() {
           <input type="text" value={id} disabled={!useCustomId} onChange={(e) => setId(e.target.value)} />
         </div>
       </div>
-      <button type="button" onClick={() => console.log('Click')}>
-        {'Create'}
-      </button>
+
+      {requestStatus !== 'running' ? (
+        <button type="button" disabled={!isValid} onClick={onCreatePost}>
+          {'Create'}
+        </button>
+      ) : (
+        <Spinner size={2} thickness={0.4} />
+      )}
     </div>
   );
 }

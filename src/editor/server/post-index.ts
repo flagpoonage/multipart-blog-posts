@@ -1,4 +1,4 @@
-import { BlogPostIndex } from '../../types';
+import { BlogPostIndex } from '@apptypes';
 import * as gen from '../../compiler/generators';
 
 export async function getPostIndex(postPath: string): Promise<BlogPostIndex> {

@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { BlogPostIndex } from 'src/types';
-import { useApiCall } from '../../../utils/hooks';
-import { PostIndexList } from '../components/PostIndexList/PostIndexList';
-import { Spinner } from '../components/Spinner/Spinner';
-import { getPostIndex } from '../services/api';
+import React, { ReactElement } from 'react';
+import { useApiCall } from '@hooks/use-api-call';
+import { PostIndexList } from '@editor-components/PostIndexList/PostIndexList';
+import { Spinner } from '@editor-components/Spinner/Spinner';
+import { getPostIndex } from '@api';
 
-export function PostIndex() {
+export function PostIndex(): ReactElement {
   const callStatus = useApiCall(() => getPostIndex());
 
   return (

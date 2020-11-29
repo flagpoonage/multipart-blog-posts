@@ -1,4 +1,4 @@
-import { BlogPostIndex } from 'src/types';
+import { BlogPostIndex } from '@apptypes';
 
 const server_path = `http://localhost:8081`;
 
@@ -15,10 +15,16 @@ export async function fetchAsText(url: string, options?: RequestInit): Promise<s
   return text;
 }
 
+export const APIRoutes = {
+  getIndex: (): string => `${server_path}/post-index`,
+  getPostContent: (id: string): string => `${server_path}/post/${id}`,
+  postCreatePost: (): string => `${server_path}/post`,
+};
+
 export async function getPostIndex(): Promise<BlogPostIndex> {
-  return fetchAsJson(`${server_path}/post-index`);
+  return fetchAsJson(APIRoutes.getIndex());
 }
 
 export async function getPostContent(postId: string): Promise<string> {
-  return fetchAsText(`${server_path}/post/${postId}`);
+  return fetchAsText(APIRoutes.getPostContent(postId));
 }

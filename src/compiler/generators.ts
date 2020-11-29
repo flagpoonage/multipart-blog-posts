@@ -1,4 +1,4 @@
-import { BlogFile, BlogFileMeta, BlogPostIndex } from '../types';
+import { BlogFile, BlogFileMeta, BlogPostIndex } from '@apptypes';
 import { loadFilesFromGlob } from './loader';
 
 type SortFunction = (a: BlogFile, b: BlogFile) => number;

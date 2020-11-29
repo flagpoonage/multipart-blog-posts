@@ -67,7 +67,15 @@
     /* Advanced Options */
     "baseUrl": "./",
     "skipLibCheck": true /* Skip type checking of declaration files. */,
-    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
+    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
+    "paths": {
+      "@api": ["./src/services/api.ts"],
+      "@apptypes": ["./src/types.ts"],
+      "@editor-pages/*": ["./src/editor/client/pages/*"],
+      "@editor-components/*": ["./src/editor/client/components/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@utils/*": ["src/utils/*"]
+    }
   },
   "exclude": ["node_modules", "build"]
 }

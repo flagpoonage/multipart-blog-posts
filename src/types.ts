@@ -50,5 +50,17 @@ export interface BlogPostIndex extends SortedIndex {
   files: Record<string, BlogFileMeta>;
 }
 
+export interface CreateBlogPostFields {
+  title: string;
+  id: string;
+}
+
+export type ApiCallSuccess<T> = [T, 'complete', null];
+export type ApiCallError = [null, 'error', string];
+export type ApiCallEmpty = [null, '', null];
+export type ApiCallRunning = [null, 'running', null];
+
+export type ApiCallTuple<T> = ApiCallSuccess<T> | ApiCallError | ApiCallEmpty | ApiCallRunning;
+
 export type SortOrder = keyof BlogPostSortIndex;
 export type SortKey = keyof SortedIndex;

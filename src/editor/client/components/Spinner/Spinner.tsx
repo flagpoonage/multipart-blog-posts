@@ -1,6 +1,5 @@
 import styles from './Spinner.module.css';
 import React, { CSSProperties } from 'react';
-// import { classnames } from '../../../../utils/classnames';
 
 interface Props {
   size: number;

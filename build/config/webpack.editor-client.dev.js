@@ -2,12 +2,21 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const base_path = process.cwd();
+const path = require('path');
 
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
   entry: `${base_path}/src/editor/client/index.tsx`,
   resolve: {
+    alias: {
+      '@api': path.resolve(base_path, './src/services/api.ts'),
+      '@apptypes': path.resolve(base_path, './src/types.ts'),
+      '@editor-pages': path.resolve(base_path, './src/editor/client/pages/'),
+      '@editor-components': path.resolve(base_path, './src/editor/client/components/'),
+      '@hooks': path.resolve(base_path, './src/hooks/'),
+      '@utils': path.resolve(base_path, './src/utils/'),
+    },
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.css'],
   },
   output: {

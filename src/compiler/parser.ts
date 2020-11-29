@@ -1,4 +1,4 @@
-import { BlogMetaVariable, BlogFileSection, BlogFileMetaSection, BlogFileMeta, BlogFileContent } from '../types';
+import { BlogMetaVariable, BlogFileSection, BlogFileMetaSection, BlogFileMeta, BlogFileContent } from '@apptypes';
 
 export function parseMeta(metaRaw: string): BlogMetaVariable[] {
   const lines = metaRaw.split('\n').filter(Boolean);
