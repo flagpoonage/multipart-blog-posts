@@ -1,8 +1,11 @@
-type ClassNameItem = string | Record<string, boolean>;
+type ClassNameItem = string | Record<string, boolean> | undefined | null;
 
 export function classnames(...values: ClassNameItem[]): string {
   return values
     .reduce((acc, val) => {
+      if (!val) {
+        return acc;
+      }
       if (typeof val === 'string') {
         acc.push(val);
         return acc;

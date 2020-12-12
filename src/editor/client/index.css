@@ -144,10 +144,10 @@ body {
 /* VARIABLES */
 
 :root {
-  --blockSpacing: 1.75rem;
+  --gridBaseSize: 1.75rem;
   --bgColor: white;
   --primaryColor: #0af;
-  --borderColor: #0af2;
+  --borderColor: #aaa;
   --formInactiveBorder: #777;
   --formDisabledBg: #eee;
   --linkColor: var(--primaryColor);
@@ -257,63 +257,92 @@ input[type='text']:focus {
 /* SPACE UTILITIES */
 
 .pd {
-  padding: var(--blockSpacing);
+  padding: var(--gridBaseSize);
 }
 
 .pd-x {
-  padding: 0 var(--blockSpacing);
+  padding-left: var(--gridBaseSize);
+  padding-right: var(--gridBaseSize);
+}
+
+.pd-x2 {
+  padding-left: calc(var(--gridBaseSize) / 2);
+  padding-right: calc(var(--gridBaseSize) / 2);
 }
 
 .pd-y {
-  padding: var(--blockSpacing) 0;
+  padding-top: var(--gridBaseSize);
+  padding-bottom: var(--gridBaseSize);
 }
 
 .pd-y2 {
-  padding: calc(var(--blockSpacing) / 2) 0;
+  padding-top: calc(var(--gridBaseSize) / 2);
+  padding-bottom: calc(var(--gridBaseSize) / 2);
 }
 
 .pd-y4 {
-  padding: calc(var(--blockSpacing) / 4) 0;
+  padding-top: calc(var(--gridBaseSize) / 4);
+  padding-bottom: calc(var(--gridBaseSize) / 4);
+}
+
+.pd-xy2 {
+  padding: calc(var(--gridBaseSize) / 2);
 }
 
 .pd-xy4 {
-  padding: calc(var(--blockSpacing) / 4);
+  padding: calc(var(--gridBaseSize) / 4);
 }
 
 .mg {
-  margin: var(--blockSpacing);
+  margin: var(--gridBaseSize);
 }
 
 .mg-x {
-  margin: 0 var(--blockSpacing);
+  margin: 0 var(--gridBaseSize);
 }
 
 .mg-y {
-  margin: var(--blockSpacing) 0;
+  margin: var(--gridBaseSize) 0;
 }
 
 .mg-l {
-  margin-left: var(--blockSpacing);
+  margin-left: var(--gridBaseSize);
 }
 
 .mg-r {
-  margin-right: var(--blockSpacing);
+  margin-right: var(--gridBaseSize);
 }
 
 .mg-t {
-  margin-top: var(--blockSpacing);
+  margin-top: var(--gridBaseSize);
 }
 
 .mg-b {
-  margin-bottom: var(--blockSpacing);
+  margin-bottom: var(--gridBaseSize);
+}
+
+.mg-b4 {
+  margin-bottom: calc(var(--gridBaseSize) / 4);
 }
 
 .w {
   width: 100%;
 }
 
+.w-20 {
+  width: calc(var(--gridBaseSize) * 20);
+}
+
 .h {
   height: 100%;
+}
+
+.h-1 {
+  height: var(--gridBaseSize);
+}
+
+.h-2 {
+  height: calc(var(--gridBaseSize) * 2);
 }
 
 /* LAYOUT UTILITIES */
@@ -336,6 +365,19 @@ input[type='text']:focus {
 
 .shrink {
   flex-shrink: 1;
+}
+
+.cntr {
+  justify-content: center;
+}
+
+.cntr-cross {
+  align-items: center;
+}
+
+.noflex {
+  flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .of {
@@ -361,6 +403,14 @@ input[type='text']:focus {
 .tl0 {
   top: 0;
   left: 0;
+}
+
+.block {
+  display: block;
+}
+
+.block-i {
+  display: inline-block;
 }
 
 /* BORDER UTILITIES */

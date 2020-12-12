@@ -1,17 +1,17 @@
 import { useState, useCallback } from 'react';
-import { ApiCallTuple } from '@apptypes';
+import { ApiCallError, ApiCallSuccess, ApiCallTuple } from '@apptypes';
 
-export const useApiPost = <In, Out>(url: string): [ApiCallTuple<Out>, (data: In) => void] => {
+export const useApiPost = <In, Out>(url: string): [ApiCallTuple<Out>, (data: In) => Promise<ApiCallTuple<Out>>] => {
   const [result, setResult] = useState<ApiCallTuple<Out>>([null, '', null]);
 
   const postFunction = useCallback(
     async (data: In) => {
       setResult([null, 'running', null]);
 
-      let responseBody;
+      let result;
 
       try {
-        responseBody = await fetch(url, {
+        const response = await fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -19,12 +19,17 @@ export const useApiPost = <In, Out>(url: string): [ApiCallTuple<Out>, (data: In)
           body: JSON.stringify(data),
         });
 
-        responseBody = (await responseBody.json()) as Out;
+        const body = (await response.json()) as Out;
 
-        setResult([responseBody, 'complete', null]);
+        result = [body, 'complete', null] as ApiCallSuccess<Out>;
+
+        setResult(result);
       } catch (exception) {
-        setResult([null, 'error', exception?.toString()]);
+        result = [null, 'error', exception?.toString()] as ApiCallError;
+        setResult(result);
       }
+
+      return result;
     },
     [url]
   );

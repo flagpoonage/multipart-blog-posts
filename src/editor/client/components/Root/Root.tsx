@@ -1,5 +1,4 @@
-import React, { ReactElement, useEffect } from 'react';
-import { getPostIndex } from '@api';
+import React, { ReactElement } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { NewPost } from '@editor-pages/NewPost';
 import { PostEditor } from '@editor-pages/PostEditor';
@@ -9,10 +8,6 @@ import styles from './Root.module.css';
 import { classnames } from '@utils/classnames';
 
 export function Root(): ReactElement {
-  useEffect(() => {
-    getPostIndex();
-  }, []);
-
   return (
     <main className={classnames(styles.root, 'bg w h flex dir-y')}>
       <BrowserRouter>

@@ -4,8 +4,9 @@ import { getPostIndex } from './post-index';
 import cors from 'cors';
 import { promises as fs } from 'fs';
 import { BlogFile, CreateBlogPostFields } from '@apptypes';
-import { format } from 'date-fns';
+import { format, formatISO } from 'date-fns';
 import { generateFileContent } from '../../compiler/compiler';
+import { loadFile } from '../../compiler/loader';
 
 const base_path = process.cwd();
 const post_path = `${base_path}/posts`;
@@ -32,13 +33,29 @@ app.get('/boundary', (rq, rs) => {
   rs.send(generateBoundary());
 });
 
+app.get('/post/:id', async (rq, rs) => {
+  console.log('Incoming request for', rq.params.id);
+
+  try {
+    const body = await loadFile(`${post_path}/${rq.params.id}.post`);
+
+    console.log('Outoging', body);
+    return rs.status(200).send(body);
+  } catch (exception) {
+    return rs.status(404).send({
+      code: 'missing',
+      message: `Unable to find the post ${rq.params.id}`,
+    });
+  }
+});
+
 app.post('/post', async (rq, rs) => {
   console.log('Body', rq.body);
   const body = rq.body as CreateBlogPostFields;
   const path = `${post_path}/${body.id}.post`;
 
   try {
-    const exists = await fs.stat(path);
+    await fs.stat(path);
 
     rs.status(409).send({
       code: 'exists',
@@ -52,7 +69,7 @@ app.post('/post', async (rq, rs) => {
     // The error is good, meaning the file doesn't exist
   }
 
-  const now = format(new Date(), 'yyyy-MM-dd');
+  const now = formatISO(new Date());
 
   const file: BlogFile = {
     id: body.id,

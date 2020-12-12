@@ -3,6 +3,8 @@ import { CreateBlogPostFields, BlogFile } from '@apptypes';
 import { Spinner } from '@editor-components/Spinner/Spinner';
 import { APIRoutes } from '@api';
 import { useApiPost } from '@hooks/use-api-post';
+import { useHistory } from 'react-router';
+import { TextInputField } from '@editor-components/FormField/InputField';
 
 export function generateIdFromTitle(title: string): string {
   const parts = title.split(' ').filter((a) => !!a);
@@ -15,12 +17,13 @@ export function generateIdFromTitle(title: string): string {
 }
 
 export function NewPost(): ReactElement {
+  const history = useHistory();
   const [useCustomId, setUseCustomId] = useState(false);
   const [title, setTitle] = useState('');
   const [id, setId] = useState('');
   const [postResult, createPost] = useApiPost<CreateBlogPostFields, BlogFile>(APIRoutes.postCreatePost());
 
-  const [, requestStatus, error] = postResult;
+  const [, requestStatus] = postResult;
 
   const onUpdateTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -38,8 +41,12 @@ export function NewPost(): ReactElement {
     setUseCustomId(!useCustomId);
   };
 
-  const onCreatePost = () => {
-    createPost({ id, title });
+  const onCreatePost = async () => {
+    const [, status] = await createPost({ id, title });
+
+    if (status === 'complete') {
+      history.push(`/post/${id}`);
+    }
   };
 
   const isValid = title && id;
@@ -47,22 +54,20 @@ export function NewPost(): ReactElement {
   return (
     <div className="pd">
       <h1>Create New Post</h1>
-      <div className="mg-y">
-        <label htmlFor="title">Post Title</label>
-        <div>
-          <input type="text" value={title} onChange={onUpdateTitle} />
-        </div>
-      </div>
-      <div className="mg-y">
-        <label htmlFor="id">Post ID</label>
+      <TextInputField className="w-20" name="title" title="Post Title" value={title} onChange={onUpdateTitle} />
+      <TextInputField
+        className="w-20"
+        name="title"
+        title="Post ID"
+        value={id}
+        onChange={(e) => setId(e.target.value)}
+        disabled={!useCustomId}
+      >
         <div>
           <input type="checkbox" checked={useCustomId} onChange={toggleCustomId} />
           <span className="c-tx-l2 f-s-sm2">Create custom ID</span>
         </div>
-        <div>
-          <input type="text" value={id} disabled={!useCustomId} onChange={(e) => setId(e.target.value)} />
-        </div>
-      </div>
+      </TextInputField>
 
       {requestStatus !== 'running' ? (
         <button type="button" disabled={!isValid} onClick={onCreatePost}>
