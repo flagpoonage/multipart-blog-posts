@@ -1,4 +1,5 @@
 export interface BlogFileSection {
+  id: string;
   tag: string;
   content: string;
 }

@@ -38,10 +38,13 @@ export function createMetaFromSections(sections: BlogFileSection[]): BlogFileMet
 }
 
 export function parseSection(section: string): BlogFileSection {
-  const [tag, ...rest] = section.split('\n');
+  const [info, ...rest] = section.split('\n');
+
+  const [id, tag] = info.trim().split(' ').filter(Boolean);
 
   return {
-    tag: tag.trim(),
+    id,
+    tag: tag,
     content: rest.join('\n').trim(),
   };
 }

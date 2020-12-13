@@ -20,13 +20,13 @@ function useExternalUpdate() {
   return data;
 }
 
-export function PostPreview(): ReactElement {
+export function PostPreview(): ReactElement | null {
   const blogPost = useExternalUpdate();
-  return (
+  return blogPost ? (
     <div className="preview-container">
       <article className="blog-post" style={{ color: 'white' }}>
-        {JSON.stringify(blogPost)}
+        <h1>{blogPost.meta.title}</h1>
       </article>
     </div>
-  );
+  ) : null;
 }

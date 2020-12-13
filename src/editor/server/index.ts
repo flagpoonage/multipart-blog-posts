@@ -7,6 +7,7 @@ import { BlogFile, CreateBlogPostFields } from '@apptypes';
 import { format, formatISO } from 'date-fns';
 import { generateFileContent } from '../../compiler/compiler';
 import { loadFile } from '../../compiler/loader';
+import { v4 as uuid } from 'uuid';
 
 const base_path = process.cwd();
 const post_path = `${base_path}/posts`;
@@ -33,11 +34,19 @@ app.get('/boundary', (rq, rs) => {
   rs.send(generateBoundary());
 });
 
+app.get('/uuid', (rq, rs) => {
+  rs.send(uuid());
+});
+
+app.get('/date', (rq, rs) => {
+  rs.send(formatISO(new Date()));
+});
+
 app.get('/post/:id', async (rq, rs) => {
   console.log('Incoming request for', rq.params.id);
 
   try {
-    const body = await loadFile(`${post_path}/${rq.params.id}.post`);
+    const body = await loadFile(`${post_path}/${rq.params.id}.mbpd`);
 
     console.log('Outoging', body);
     return rs.status(200).send(body);
@@ -52,7 +61,7 @@ app.get('/post/:id', async (rq, rs) => {
 app.post('/post', async (rq, rs) => {
   console.log('Body', rq.body);
   const body = rq.body as CreateBlogPostFields;
-  const path = `${post_path}/${body.id}.post`;
+  const path = `${post_path}/${body.id}.mbpd`;
 
   try {
     await fs.stat(path);

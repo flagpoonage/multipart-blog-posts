@@ -71,6 +71,7 @@
     "paths": {
       "@api": ["./src/services/api.ts"],
       "@apptypes": ["./src/types.ts"],
+      "@compiler/*": ["./src/compiler/*"],
       "@editor-pages/*": ["src/editor/client/main/pages/*"],
       "@editor-components/*": ["./src/editor/client/components/*"],
       "@hooks/*": ["src/hooks/*"],

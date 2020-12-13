@@ -32,6 +32,9 @@ export function EditorPanel({ post, onChange }: EditorPanelProps): ReactElement 
           value={post?.meta.title || ''}
           onChange={onSetTitle}
         />
+        {post?.sections.map((a) => {
+          <SectionInputField />;
+        })}
       </div>
     </div>
   );

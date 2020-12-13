@@ -1,4 +1,4 @@
-import { generateBoundary, validateBoundary } from 'compiler/boundary';
+import { generateBoundary, validateBoundary } from '@compiler/boundary';
 
 describe('Boundary utilities', () => {
   describe('generateBoundary', () => {
