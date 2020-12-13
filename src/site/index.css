@@ -145,9 +145,9 @@ body {
 
 :root {
   --gridBaseSize: 1.75rem;
-  --bgColor: white;
+  --bgColor: #222;
   --primaryColor: #0af;
-  --borderColor: #aaa;
+  --borderColor: #0af;
   --formInactiveBorder: #777;
   --formDisabledBg: #eee;
   --linkColor: var(--primaryColor);
@@ -159,12 +159,14 @@ body {
   --radius: 0.2rem;
 }
 
+body {
+  background-color: var(--bgColor);
+}
+
 /* SPECIAL ELEMENTS */
 
-#react-container {
-  width: 100%;
-  height: 100%;
-  color: var(--textColor);
+#preview-container {
+  padding: calc(var(--gridBaseSize) * 2);
 }
 
 /* DEFAULTS */
@@ -212,135 +214,176 @@ input[type='text']:focus {
 
 /* COLOUR UTILITIES */
 
+/* colour-background (default to background color) */
 .c-bg {
   background-color: var(--bgColor);
 }
 
+/* colour-background-primary (use primary colour as background */
+.c-bg-p {
+  background-color: var(--primaryColor);
+}
+
+/* colour-text-light-1 (use 1 shade lighter than black as text colour) */
 .c-tx-l1 {
   color: #222;
 }
 
+/* colour-text-light-2 (use 2 shades lighter than black as text colour) */
 .c-tx-l2 {
   color: #444;
 }
 
+/* colour-text-background (use the default background color as the text colour */
+.c-tx-bg {
+  color: var(--bgColor);
+}
+
 /* FONT UTILITIES */
 
+/* font-bold (use a bold font weight) */
 .f-b {
   font-weight: bold;
 }
 
+/* font-size-heading1 (use the standard H1 font size) */
 .f-s-h1 {
   font-size: var(--fontSizeH1);
 }
 
+/* font-size-heading1 (use the standard H1 font size) */
 .f-s-h2 {
   font-size: var(--fontSizeH2);
 }
 
+/* font-size-smaller-1 (use a font size 1 increment smaller than the default) */
 .f-s-sm1 {
   font-size: var(--fontSizeSmall);
 }
 
+/* font-size-smaller-2 (use a font size 2 increments smaller than the default) */
 .f-s-sm2 {
   font-size: var(--fontSizeSmaller);
 }
 
+/* font-2xlineheight (use a line height twice the default font size) */
 .f-2lh {
   line-height: 2rem;
 }
 
+/* font-2xlineheightusingem (use a line height twice the inherited font size )*/
 .f-2elh {
   line-height: 2em;
 }
 
 /* SPACE UTILITIES */
 
+/* padding (use the grid size as padding on all sides) */
 .pd {
   padding: var(--gridBaseSize);
 }
 
+/* padding-xaxis (use the grid size as padding on the left and right) */
 .pd-x {
   padding-left: var(--gridBaseSize);
   padding-right: var(--gridBaseSize);
 }
 
+/* padding-xaxix/2 (use half of the grid size as padding on the left and right) */
 .pd-x2 {
   padding-left: calc(var(--gridBaseSize) / 2);
   padding-right: calc(var(--gridBaseSize) / 2);
 }
 
+/* padding-yaxis (use the grid size as padding on the top and bottom) */
 .pd-y {
   padding-top: var(--gridBaseSize);
   padding-bottom: var(--gridBaseSize);
 }
 
+/* padding-yaxis/2 (use half of the grid size as padding on the top and bottom) */
 .pd-y2 {
   padding-top: calc(var(--gridBaseSize) / 2);
   padding-bottom: calc(var(--gridBaseSize) / 2);
 }
 
+/* padding-yaxis/4 (use quarter of the grid size as padding on the top and bottom) */
 .pd-y4 {
   padding-top: calc(var(--gridBaseSize) / 4);
   padding-bottom: calc(var(--gridBaseSize) / 4);
 }
 
+/* padding-xaxis+yaxis/2 (use half of the grid size as padding on all sides) */
 .pd-xy2 {
   padding: calc(var(--gridBaseSize) / 2);
 }
 
+/* padding-xaxis+yaxis/4 (use quarter of the grid size as padding on all sides) */
 .pd-xy4 {
   padding: calc(var(--gridBaseSize) / 4);
 }
 
+/* margin (use the grid size as margin on all sides */
 .mg {
   margin: var(--gridBaseSize);
 }
 
+/* margin-xaxis (use the grid size as margin on the left and right) */
 .mg-x {
   margin: 0 var(--gridBaseSize);
 }
 
+/* margin-yaxis (use the grid size as margin on the top and bottom) */
 .mg-y {
   margin: var(--gridBaseSize) 0;
 }
 
+/* margin-left (use the grid size as margin on the left) */
 .mg-l {
   margin-left: var(--gridBaseSize);
 }
 
+/* margin-right (use the grid size as margin on the right) */
 .mg-r {
   margin-right: var(--gridBaseSize);
 }
 
+/* margin-top (use the grid size as margin on the top) */
 .mg-t {
   margin-top: var(--gridBaseSize);
 }
 
+/* margin-bottom (use the grid size as margin on the bottom) */
 .mg-b {
   margin-bottom: var(--gridBaseSize);
 }
 
+/* margin-bottom/4 (use quarter of the grid size as margin on the bottom) */
 .mg-b4 {
   margin-bottom: calc(var(--gridBaseSize) / 4);
 }
 
+/* width (use full width) */
 .w {
   width: 100%;
 }
 
+/* width-20x (use 20 times the grid size as width) */
 .w-20 {
   width: calc(var(--gridBaseSize) * 20);
 }
 
+/* width (use full height) */
 .h {
   height: 100%;
 }
 
+/* height-1x (use the grid size as height) */
 .h-1 {
   height: var(--gridBaseSize);
 }
 
+/* height-2x (use 2 times the grid size as height) */
 .h-2 {
   height: calc(var(--gridBaseSize) * 2);
 }

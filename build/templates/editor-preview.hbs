@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <meta charset="utf-8">
+  <title>{{{htmlWebpackPlugin.options.title}}}</title>
+  {{#each htmlWebpackPlugin.files.css}}
+  <link rel="stylesheet" href="/{{this}}" />
+  {{/each}}
+
+<body>
+  {{#each htmlWebpackPlugin.files.js}}
+  <script src="/{{{this}}}"></script>
+  {{/each}}
+</body>
+
+</html>

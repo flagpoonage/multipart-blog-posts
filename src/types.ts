@@ -55,10 +55,12 @@ export interface CreateBlogPostFields {
   id: string;
 }
 
-export type ApiCallSuccess<T> = [T, 'complete', null];
-export type ApiCallError = [null, 'error', string];
-export type ApiCallEmpty = [null, '', null];
-export type ApiCallRunning = [null, 'running', null];
+export type ApiCallSuccess<T> = [T, 'complete', undefined];
+export type ApiCallError = [undefined, 'error', string];
+export type ApiCallEmpty = [undefined, '', undefined];
+export type ApiCallRunning = [undefined, 'running', undefined];
+
+export type ApiCallStatus = 'complete' | 'error' | 'running' | '';
 
 export type ApiCallTuple<T> = ApiCallSuccess<T> | ApiCallError | ApiCallEmpty | ApiCallRunning;
 

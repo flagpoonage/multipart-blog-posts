@@ -2,11 +2,11 @@ import { useState, useCallback } from 'react';
 import { ApiCallError, ApiCallSuccess, ApiCallTuple } from '@apptypes';
 
 export const useApiPost = <In, Out>(url: string): [ApiCallTuple<Out>, (data: In) => Promise<ApiCallTuple<Out>>] => {
-  const [result, setResult] = useState<ApiCallTuple<Out>>([null, '', null]);
+  const [result, setResult] = useState<ApiCallTuple<Out>>([undefined, '', undefined]);
 
   const postFunction = useCallback(
     async (data: In) => {
-      setResult([null, 'running', null]);
+      setResult([undefined, 'running', undefined]);
 
       let result;
 
@@ -21,11 +21,11 @@ export const useApiPost = <In, Out>(url: string): [ApiCallTuple<Out>, (data: In)
 
         const body = (await response.json()) as Out;
 
-        result = [body, 'complete', null] as ApiCallSuccess<Out>;
+        result = [body, 'complete', undefined] as ApiCallSuccess<Out>;
 
         setResult(result);
       } catch (exception) {
-        result = [null, 'error', exception?.toString()] as ApiCallError;
+        result = [undefined, 'error', exception?.toString()] as ApiCallError;
         setResult(result);
       }
 

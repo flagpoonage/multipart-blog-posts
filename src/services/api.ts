@@ -1,4 +1,4 @@
-import { BlogPostIndex } from '@apptypes';
+import { BlogFile, BlogPostIndex } from '@apptypes';
 
 const server_path = `http://localhost:8081`;
 
@@ -25,6 +25,6 @@ export async function getPostIndex(): Promise<BlogPostIndex> {
   return fetchAsJson(APIRoutes.getIndex());
 }
 
-export async function getPostContent(postId: string): Promise<string> {
-  return fetchAsText(APIRoutes.getPostContent(postId));
+export async function getPostContent(postId: string): Promise<BlogFile> {
+  return fetchAsJson(APIRoutes.getPostContent(postId));
 }

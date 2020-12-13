@@ -1,20 +1,21 @@
 import { ApiCallTuple } from '@apptypes';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export const useApiCall = <T>(callFn: () => Promise<T>): ApiCallTuple<T> => {
-  const [[data, status, error], setResult] = useState<ApiCallTuple<T>>([null, '', null]);
+  const [[data, status, error], setResult] = useState<ApiCallTuple<T>>([undefined, '', undefined]);
 
-  const callRef = useRef(callFn);
+  useEffect(() => {
+    setResult([undefined, '', undefined]);
+  }, [callFn]);
 
   useEffect(() => {
     if (!status) {
-      setResult([null, 'running', null]);
-      callRef
-        .current()
-        .then((v) => setResult([v, 'complete', null]))
-        .catch((e) => setResult([null, 'error', e]));
+      setResult([undefined, 'running', undefined]);
+      callFn()
+        .then((v) => setResult([v, 'complete', undefined]))
+        .catch((e) => setResult([undefined, 'error', e]));
     }
-  }, [status]);
+  }, [status, callFn]);
 
   return [data, status, error] as ApiCallTuple<T>;
 };

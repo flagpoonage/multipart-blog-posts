@@ -1,11 +1,12 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useCallback } from 'react';
 import { useApiCall } from '@hooks/use-api-call';
 import { PostIndexList } from '@editor-components/PostIndexList/PostIndexList';
 import { Spinner } from '@editor-components/Spinner/Spinner';
 import { getPostIndex } from '@api';
 
 export function PostIndex(): ReactElement {
-  const callStatus = useApiCall(() => getPostIndex());
+  const apiCall = useCallback(() => getPostIndex(), []);
+  const callStatus = useApiCall(apiCall);
 
   return (
     <div className="pd">

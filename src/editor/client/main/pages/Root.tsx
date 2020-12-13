@@ -1,15 +1,13 @@
 import React, { ReactElement } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { NewPost } from '@editor-pages/NewPost';
-import { PostEditor } from '@editor-pages/PostEditor';
-import { PostIndex } from '@editor-pages/PostIndex';
+import { NewPost } from './NewPost';
+import { PostEditor } from './PostEditor';
+import { PostIndex } from './PostIndex';
 import { Header } from '@editor-components/Header/Header';
-import styles from './Root.module.css';
-import { classnames } from '@utils/classnames';
 
 export function Root(): ReactElement {
   return (
-    <main className={classnames(styles.root, 'bg w h flex dir-y')}>
+    <main className="bg w h flex dir-y">
       <BrowserRouter>
         <Header />
         <div className="grow of-y">
