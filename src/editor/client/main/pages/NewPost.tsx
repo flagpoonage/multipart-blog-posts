@@ -70,7 +70,7 @@ export function NewPost(): ReactElement {
       </TextInputField>
 
       {requestStatus !== 'running' ? (
-        <button type="button" disabled={!isValid} onClick={onCreatePost}>
+        <button className="pd-x2 pd-y4 bd-0 cur-p" type="button" disabled={!isValid} onClick={onCreatePost}>
           {'Create'}
         </button>
       ) : (

@@ -84,6 +84,7 @@ app.post('/post', async (rq, rs) => {
     id: body.id,
     boundary: generateBoundary(),
     meta: {
+      id: uuid(),
       title: body.title,
       author: 'James Hay',
       created: now,

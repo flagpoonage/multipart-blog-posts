@@ -9,6 +9,7 @@ export interface BlogFileMetaSection extends BlogFileSection {
 }
 
 export interface BlogFileMeta extends Record<string, unknown> {
+  id: string;
   author: string;
   created: string;
   updated: string;

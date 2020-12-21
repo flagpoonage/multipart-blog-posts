@@ -2,11 +2,11 @@ import styles from './Spinner.module.css';
 import React, { CSSProperties } from 'react';
 
 interface Props {
-  size: number;
-  thickness: number;
+  size?: number;
+  thickness?: number;
 }
 
-export function Spinner({ size, thickness }: Props) {
+export function Spinner({ size = 2, thickness = 0.4 }: Props) {
   const containerStyle: CSSProperties = {
     width: `${size}rem`,
     height: `${size}rem`,

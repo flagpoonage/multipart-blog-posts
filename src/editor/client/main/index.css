@@ -156,7 +156,7 @@ body {
   --fontSizeSmall: 0.8rem;
   --fontSizeSmaller: 0.7rem;
   --textColor: #222;
-  --radius: 0.2rem;
+  --radius: 0rem;
 }
 
 /* SPECIAL ELEMENTS */
@@ -217,9 +217,18 @@ input[type='text']:focus {
   background-color: var(--bgColor);
 }
 
+.c-bg-trns {
+  background-color: transparent;
+}
+
 /* colour-background-primary (use primary colour as background */
 .c-bg-p {
   background-color: var(--primaryColor);
+}
+
+/* colour-text-primary (use primary colour as text */
+.c-tx-p {
+  color: var(--primaryColor);
 }
 
 /* colour-text-light-1 (use 1 shade lighter than black as text colour) */
@@ -279,6 +288,10 @@ input[type='text']:focus {
 /* padding (use the grid size as padding on all sides) */
 .pd {
   padding: var(--gridBaseSize);
+}
+
+.pd-0 {
+  padding: 0;
 }
 
 /* padding-xaxis (use the grid size as padding on the left and right) */
@@ -418,7 +431,6 @@ input[type='text']:focus {
 
 .noflex {
   flex-shrink: 0;
-  flex-shrink: 0;
 }
 
 .of {
@@ -454,10 +466,14 @@ input[type='text']:focus {
   display: inline-block;
 }
 
-/* BORDER UTILITIES */
+/* DISPLAY UTILITIES */
 
 .bd {
   border: solid 1px var(--borderColor);
+}
+
+.bd-0 {
+  border: none;
 }
 
 .bd-t {
@@ -484,4 +500,12 @@ input[type='text']:focus {
 .bd-y {
   border-left: solid 1px var(--borderColor);
   border-right: solid 1px var(--borderColor);
+}
+
+.cur-p {
+  cursor: pointer;
+}
+
+.hv-ul:hover {
+  text-decoration: underline;
 }
